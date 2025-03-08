@@ -1,0 +1,4 @@
+pytubefix
+pydub
+requests
+ffmpeg-python
