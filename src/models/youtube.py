@@ -1,19 +1,17 @@
-from urllib.parse import urlparse, parse_qs
 from tkinter import messagebox
 import config
-from utils.files import manejo_carpetas, ffmpeg_merge
+from utils.files import obtener_direccion_carpeta, ffmpeg_merge
 from utils.video import obtener_video_id
 import requests
 from pytubefix import YouTube, Playlist
 from pytubefix.cli import on_progress
 import os
 import re
-import config
 
 class YoutubeModel:
 
     def descargar_video_mp4(self, direccion_video:str, resolucion='144p'):
-        carpeta_destino = manejo_carpetas.obtener_direccion_carpeta("")
+        carpeta_destino = obtener_direccion_carpeta()
         if carpeta_destino == None:
             messagebox.showinfo("Error", config.errorCarpeta)
         else:
@@ -69,14 +67,14 @@ class YoutubeModel:
 
     def descargar_audio(self, direccion_video:str):
         try:
-            carpeta_destino = manejo_carpetas.obtener_direccion_carpeta("")
+            carpeta_destino = obtener_direccion_carpeta()
             if carpeta_destino == None:
                 messagebox.showerror("Error", config.errorCarpeta)
                 print("Entró")
             else:
                 url = direccion_video.strip()
                 print(url)
-                video_id = YoutubeModel.obtener_video_id("", url)
+                video_id = obtener_video_id(url)
 
                 if not video_id:
                     messagebox.showerror("Error", "URL no válida")
@@ -99,7 +97,7 @@ class YoutubeModel:
 
     def descargar_playlist(self, direccion_video:str):
         try:
-            carpeta_destino = manejo_carpetas.obtener_direccion_carpeta("")
+            carpeta_destino = obtener_direccion_carpeta()
             if carpeta_destino == None:
                 messagebox.showerror("Error", config.errorCarpeta)
             else:
@@ -122,13 +120,13 @@ class YoutubeModel:
 
     def descargar_shorts(self, direccion_video:str):
         try:
-            carpeta_destino = manejo_carpetas.obtener_direccion_carpeta("")
+            carpeta_destino = obtener_direccion_carpeta()
             if carpeta_destino == None:
                 messagebox.showerror("Error", config.errorCarpeta)
             else:
                 url = direccion_video.strip()
                 print(url)
-                video_id = YoutubeModel.obtener_video_id("", url)
+                video_id = obtener_video_id(url)
 
                 if not video_id:
                     messagebox.showerror("Error", "No se pudo obtener el id del video")
@@ -173,7 +171,7 @@ class YoutubeModel:
     def descargar_clips(self, direccion_video:str):
         try:
             # Obtener la carpeta de descarga
-            carpeta_destino = manejo_carpetas.obtener_direccion_carpeta("")
+            carpeta_destino = obtener_direccion_carpeta()
             if carpeta_destino == None:
                 messagebox.showerror("Error", "No se pudo obtener la carpeta de descarga")
             else:

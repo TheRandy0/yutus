@@ -2,7 +2,7 @@ import os
 
 FFMPEG_PATH = "ffmpeg.exe"
 BASE_DIR = os.getcwd()
-json_path = os.path.join(BASE_DIR, "data.json")
+json_path = os.path.join(BASE_DIR, "..", "data.json")
 
 command = [FFMPEG_PATH, "-version"]
 

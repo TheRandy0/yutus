@@ -1,42 +1,38 @@
-from tkinter import Frame, PhotoImage, Entry, Label, Button
-from models.youtube import YoutubeModel
-from utils.files import manejo_carpetas
-from views.data_management import DataManagementView
+from tkinter import Tk, PhotoImage, Entry, Label, Button
 
-class HomeView(Frame):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+class HomeView:
+    def __init__(self):
+        self.root = Tk()
 
-        self.grid_columnconfigure(0, weight=1)
+        root = self.root
+        root.geometry("500x500")
+        root.iconbitmap("../Icons/apple.ico")
+        root.iconphoto(False, PhotoImage(file="../Icons/apple.png"))
+        root.resizable(False, False)
+        root.title("Yutus V1.2")
 
-        # root.geometry("500x500")
-        # root.iconbitmap("Icons/apple.ico")
-        # root.iconphoto(False, PhotoImage(file="Icons/apple.png"))
-        # root.resizable(False, False)
-        # root.title("Yutus V1.2")
+        bgImage = PhotoImage(file="../BackGround/minecraft.png")
+        bgLabel = Label(root, image=bgImage)
+        bgLabel.place(x=0, y=0, relwidth=1, relheight=1)
 
-        # bgImage = PhotoImage(file="BackGround/minecraft.png")
-        # bgLabel = Label(root, image=bgImage)
-        # bgLabel.place(x=0, y=0, relwidth=1, relheight=1)
-
-        direccionVideoUniversal = Entry(self)
+        direccionVideoUniversal = Entry(root)
         direccionVideoUniversal.place(x= 1, y = 0, height=28, width=190)
 
-        direccionAudio = Entry(self)
+        direccionAudio = Entry(root)
         direccionAudio.place(x= 1, y = 60, height=28, width=190)
 
-        # self.bgImage = bgImage
-        # self.bgLabel = bgLabel
+        self.bgImage = bgImage
+        self.bgLabel = bgLabel
         self.direccionVideoUniversal = direccionVideoUniversal
         self.direccionAudio = direccionAudio
 
-        btnSelectFolder = Button(self, text="Seleccionar carpeta de descarga")
+        btnSelectFolder = Button(root, text="Seleccionar carpeta de descarga")
         btnSelectFolder.place(x = 1, y = 90, width=190, height=28)
 
-        btnDownload = Button(self, text="Descarga univesal", width=25, height=1, font=("Roboto Cn", 11))
+        btnDownload = Button(root, text="Descarga univesal", width=25, height=1, font=("Roboto Cn", 11))
         btnDownload.place(x=265, y=0)
 
-        btnDownloadAudio = Button(self, text="Descargar Audio", width=25, height=1, font=("Roboco Cn", 11))
+        btnDownloadAudio = Button(root, text="Descargar Audio", width=25, height=1, font=("Roboco Cn", 11))
         btnDownloadAudio.place(x=265, y=60)
 
         #Button(root, text="Seleccionar carpeta de descarga", command=lambda: manejo_carpetas.asignar_carpeta("")).place(x = 1, y = 90, width=190, height=28)

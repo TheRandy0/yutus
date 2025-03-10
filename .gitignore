@@ -3,3 +3,6 @@ ffmpeg.exe
 __pycache__
 /asdf
 .vscode
+.venv
+.idea
+/data.json

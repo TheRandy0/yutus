@@ -1,12 +1,11 @@
-from views.home import HomeView
 from controllers.home_controller import HomeController
 from models.youtube import YoutubeModel
-from views.view import View
+from views.view import ViewManager
 
 def main():
     model = YoutubeModel()
-    view = View()
-    controller = HomeController(model, view)
+    view_manager = ViewManager()
+    controller = HomeController(model, view_manager)
     controller.start_mainloop()
 
 if __name__ == "__main__":

@@ -1,20 +1,23 @@
-from tkinter import Tk, ttk, Button, messagebox, Frame
+from tkinter import Tk, ttk, Button, messagebox
 from models.youtube import YoutubeModel
 
-class DataManagementView(Frame):
+class DataManagementView:
     def __init__(self, url_youtube:str):
-        # root.geometry('500x500')
-        # vsr = ttk.Frame(root, padding=10)
-        # vsr.grid()
-        # root.resizable(False, False)
+        self.root = Tk()
+
+        root = self.root
+        root.geometry('500x500')
+        vsr = ttk.Frame(root, padding=10)
+        vsr.grid()
+        root.resizable(False, False)
         fuente = "Roboco Cn"
         
-        Button(self, text="1080p", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '1080p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=0)
-        Button(self, text="720p", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '720p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=1)
-        Button(self, text="480", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '480p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=2)
-        Button(self, text="360", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '360p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=3)
-        Button(self, text="240", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '240p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=4)
-        Button(self, text="144", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '144p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=5)
+        Button(vsr, text="1080p", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '1080p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=0)
+        Button(vsr, text="720p", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '720p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=1)
+        Button(vsr, text="480", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '480p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=2)
+        Button(vsr, text="360", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '360p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=3)
+        Button(vsr, text="240", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '240p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=4)
+        Button(vsr, text="144", command=lambda: YoutubeModel.descargar_video_mp4("", url_youtube, '144p'), width=25, height=1, font=(fuente,11)).grid(column=0, row=5)
 
     def draw(self):
         self.root.mainloop()
